@@ -4,3 +4,5 @@
 *.ear
 .metadata/
 .recommenders/
+Mouse/.gitignore
+RemoteSystemsTempFiles/.project
