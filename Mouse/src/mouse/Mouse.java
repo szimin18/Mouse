@@ -14,7 +14,7 @@ public class Mouse {
 		testIMouseList(new MouseLinkedList<Integer>());
 	}
 
-	private void testIMouseList(IMouseList<Integer> list) {
+	private static void testIMouseList(IMouseList<Integer> list) {
 		performChecked((x) -> {
 			list.add(1);
 		});
@@ -38,7 +38,7 @@ public class Mouse {
 		});
 	}
 
-	private void performChecked(Consumer<Void> action) {
+	private static void performChecked(Consumer<Void> action) {
 		try {
 			action.accept(null);
 		} catch (Throwable e) {
