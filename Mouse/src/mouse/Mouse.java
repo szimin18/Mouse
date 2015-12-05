@@ -12,7 +12,7 @@ import mouse.list.MouseArrayList;
 public class Mouse {
 	public static void main(String[] args) {
 		testIMouseList(new MouseArrayList<Integer>());
-		testIMouseList(new MouseLinkedList<Integer>());
+		// testIMouseList(new MouseLinkedList<Integer>());
 	}
 
 	private static void testIMouseList(IMouseList<Integer> list) {
@@ -42,7 +42,9 @@ public class Mouse {
 	private static void performChecked(Consumer<Void> action) {
 		try {
 			action.accept(null);
+			System.out.println("passed");
 		} catch (Throwable e) {
+			System.out.println("failed");
 			e.printStackTrace();
 		}
 	}

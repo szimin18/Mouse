@@ -26,7 +26,15 @@ public class MouseArrayList<T> implements IMouseList<T> {
 
 	@Override
 	public boolean remove(T element) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < size; i++) {
+			if (array[i].equals(element)) {
+				for (; i < size - 1; i++) {
+					array[i] = array[i + 1];
+				}
+				return true;
+			}
+		}
+
 		return false;
 	}
 
@@ -68,7 +76,11 @@ public class MouseArrayList<T> implements IMouseList<T> {
 
 	@Override
 	public boolean contains(T element) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < size; i++) {
+			if (array[i].equals(element)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
