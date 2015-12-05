@@ -3,6 +3,7 @@ package mouse;
 import java.util.function.Consumer;
 
 import mouse.list.IMouseList;
+import mouse.list.MouseArrayList;
 
 // TODO More tests
 // TODO Iterable
