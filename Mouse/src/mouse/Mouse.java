@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import mouse.list.IMouseList;
 import mouse.list.MouseArrayList;
+import mouse.list.MouseLinkedList;
 
 // TODO More tests
 // TODO Iterable
@@ -12,7 +13,7 @@ import mouse.list.MouseArrayList;
 public class Mouse {
 	public static void main(String[] args) {
 		testIMouseList(new MouseArrayList<Integer>());
-		// testIMouseList(new MouseLinkedList<Integer>());
+		testIMouseList(new MouseLinkedList<Integer>());
 	}
 
 	private static void testIMouseList(IMouseList<Integer> list) {
