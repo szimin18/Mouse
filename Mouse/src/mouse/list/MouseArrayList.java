@@ -84,4 +84,10 @@ public class MouseArrayList<T> implements IMouseList<T> {
 		return false;
 	}
 
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

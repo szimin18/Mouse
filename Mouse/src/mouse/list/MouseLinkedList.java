@@ -144,4 +144,10 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 			return next;
 		}
 	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
 }

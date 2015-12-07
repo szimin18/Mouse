@@ -31,8 +31,7 @@ public interface IMouseList<T> {
 	 *             when index is negative or greater than or equals to the
 	 *             collection size
 	 */
-	public void addAt(T element, int index)
-			throws MouseIndexOutOfBoudsException;
+	public void addAt(T element, int index) throws MouseIndexOutOfBoudsException;
 
 	/**
 	 * Removes element at given position.
@@ -79,4 +78,10 @@ public interface IMouseList<T> {
 	 * @return true if this list contains the given element, false otherwise
 	 */
 	public boolean contains(T element);
+
+	/**
+	 * Removes all items from this list. A proceeding call to {@link #size()}
+	 * should return 0.
+	 */
+	public void clear();
 }
