@@ -21,6 +21,7 @@ public class Mouse {
 		System.out.println(String.format("General tests on: %s", list.getClass().getSimpleName()));
 		System.out.println("--------------------------------------------------");
 		System.out.println();
+		System.out.flush();
 
 		performChecked(() -> {
 			assertThat(list.isEmpty());
@@ -144,11 +145,15 @@ public class Mouse {
 		try {
 			action.perform();
 			System.out.println("Test passed.");
+			System.out.flush();
 		} catch (Throwable e) {
 			System.out.println(String.format("Test failed: %s.", message));
 			e.printStackTrace();
+			System.out.flush();
+			System.err.flush();
 		}
 		System.out.println();
+		System.out.flush();
 	}
 
 	private static void performExpecting(Action action, Class<? extends Throwable> expectedThrowableClass, String message) {
@@ -156,6 +161,7 @@ public class Mouse {
 		try {
 			action.perform();
 			System.out.println(String.format("Test failed: %s.", message));
+			System.out.flush();
 		} catch (Throwable e) {
 			Class<? extends Throwable> actualThrowableClass = e.getClass();
 			if (expectedThrowableClass.isAssignableFrom(actualThrowableClass)) {
@@ -163,8 +169,11 @@ public class Mouse {
 			} else {
 				e.printStackTrace();
 			}
+			System.out.flush();
+			System.err.flush();
 		}
 		System.out.println();
+		System.out.flush();
 	}
 
 	private static interface Action {
