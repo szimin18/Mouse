@@ -31,6 +31,7 @@ public class MouseArrayList<T> implements IMouseList<T> {
 				for (; i < size - 1; i++) {
 					array[i] = array[i + 1];
 				}
+				size--;
 				return true;
 			}
 		}
@@ -70,8 +71,7 @@ public class MouseArrayList<T> implements IMouseList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class MouseArrayList<T> implements IMouseList<T> {
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
