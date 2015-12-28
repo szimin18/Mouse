@@ -112,7 +112,7 @@ public class Mouse {
 		}, "I should be able to add element at last index");
 
 		performChecked(() -> {
-			assertThat(list.get(0) == 3);
+			assertThat(list.get(0) == 2);
 		}, "after adding an element to a list it should be present at certain position");
 
 		performChecked(() -> {

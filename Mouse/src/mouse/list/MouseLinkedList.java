@@ -70,29 +70,42 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 	}
 
 	@Override
-	public boolean removeAt(int index) 
-			throws MouseIndexOutOfBoudsException {
+	public boolean removeAt(int index) throws MouseIndexOutOfBoudsException {
+		if (index < 0 || index >= size) {
+			throw new MouseIndexOutOfBoudsException();
+		}
 		Node node = head;
 		for (int i = 0; i < size; i++) {
 			if (i == index) {
-				if (node.hasNext()) {
+				if (node.getNext().hasNext()) {
 					node.setNext(node.getNext().getNext());
 					node.getNext().setNext(null);
-				} else{
-					node.getNext().setNext(null);
+				} else {
+					node.setNext(null);
 				}
-				
+				size--;
+				return true;	
 			}
-			size --;
-			return true;
+			node = node.getNext();
 		}
 		return false;
 	}
 
 	@Override
 	public T get(int index) throws MouseIndexOutOfBoudsException {
-		// TODO Auto-generated method stub
-		return null;
+		if (index >= size || index < 0) {
+			throw new MouseIndexOutOfBoudsException();
+		}
+
+		Node node = head;
+		for (int i = 0; i < size; i++) {
+			if (i == index) {
+				return node.getNext().getData();
+			}
+			node.getNext();
+		}
+
+		throw new AssertionError();
 	}
 
 	@Override
@@ -102,15 +115,14 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
 	public boolean contains(T element) {
 		Node node = head;
 		while (node.hasNext()) {
-			if (node.getData().equals(element)) {
+			if (node.getNext().getData().equals(element)) {
 				return true;
 			}
 			node = node.getNext();
@@ -147,7 +159,8 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		head.setNext(null);
+		size = 0;
+
 	}
 }

@@ -54,14 +54,23 @@ public class MouseArrayList<T> implements IMouseList<T> {
 
 	@Override
 	public boolean removeAt(int index) throws MouseIndexOutOfBoudsException {
-		// TODO Auto-generated method stub
-		return false;
+		if (index >= size || index < 0) {
+			throw new MouseIndexOutOfBoudsException();
+		}
+			for (int i = index; i < size - 1; i++) {
+				array[i] = array[i + 1];
+			}
+			size --;
+			return true;
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public T get(int index) throws MouseIndexOutOfBoudsException {
-		// TODO Auto-generated method stub
-		return null;
+		if (index >= size || index < 0) {
+			throw new MouseIndexOutOfBoudsException();
+		}
+		return (T) array[index];
 	}
 
 	@Override
@@ -86,8 +95,9 @@ public class MouseArrayList<T> implements IMouseList<T> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-
+		for (int i = 0; i < size; i++) {
+			array[i] = null;
+		}
+		size = 0;
 	}
-
 }
