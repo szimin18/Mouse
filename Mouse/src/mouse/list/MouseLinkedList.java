@@ -47,8 +47,7 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 	}
 
 	@Override
-	public void addAt(T element, int index)
-			throws MouseIndexOutOfBoudsException {
+	public void addAt(T element, int index) throws MouseIndexOutOfBoudsException {
 		if (index < 0 || index > size) {
 			throw new MouseIndexOutOfBoudsException();
 		}
@@ -84,7 +83,7 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 					node.setNext(null);
 				}
 				size--;
-				return true;	
+				return true;
 			}
 			node = node.getNext();
 		}
@@ -93,19 +92,17 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 
 	@Override
 	public T get(int index) throws MouseIndexOutOfBoudsException {
-		if (index >= size || index < 0) {
+		if (index < 0 || index >= size) {
 			throw new MouseIndexOutOfBoudsException();
 		}
 
 		Node node = head;
-		for (int i = 0; i < size; i++) {
-			if (i == index) {
-				return node.getNext().getData();
-			}
+
+		for (int i = 0; i < index; i++) {
 			node.getNext();
 		}
 
-		throw new AssertionError();
+		return node.getNext().getData();
 	}
 
 	@Override
