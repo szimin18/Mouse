@@ -2,7 +2,8 @@ package mouse.list;
 
 import mouse.list.exception.MouseIndexOutOfBoudsException;
 
-public interface IMouseList<T> {
+// See: https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html
+public interface IMouseList<T> extends Iterable<T> {
 	/**
 	 * Adds element at the end.
 	 * 
