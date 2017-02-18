@@ -1,5 +1,7 @@
 package mouse.list;
 
+import java.util.Iterator;
+
 import mouse.list.exception.MouseIndexOutOfBoudsException;
 
 public class MouseArrayList<T> implements IMouseList<T> {
@@ -57,11 +59,11 @@ public class MouseArrayList<T> implements IMouseList<T> {
 		if (index >= size || index < 0) {
 			throw new MouseIndexOutOfBoudsException();
 		}
-			for (int i = index; i < size - 1; i++) {
-				array[i] = array[i + 1];
-			}
-			size --;
-			return true;
+		for (int i = index; i < size - 1; i++) {
+			array[i] = array[i + 1];
+		}
+		size--;
+		return true;
 	}
 
 	@Override
@@ -99,5 +101,26 @@ public class MouseArrayList<T> implements IMouseList<T> {
 			array[i] = null;
 		}
 		size = 0;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			private int cursor = 0;
+
+			@Override
+			public boolean hasNext() {
+				return cursor != size;
+			}
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public T next() {
+				if (hasNext()) {
+					return (T) array[cursor++];
+				}
+				throw new IllegalStateException();
+			}
+		};
 	}
 }

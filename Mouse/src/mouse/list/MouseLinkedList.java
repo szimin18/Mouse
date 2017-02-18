@@ -1,5 +1,7 @@
 package mouse.list;
 
+import java.util.Iterator;
+
 import mouse.list.exception.MouseIndexOutOfBoudsException;
 
 public class MouseLinkedList<T> implements IMouseList<T> {
@@ -47,7 +49,8 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 	}
 
 	@Override
-	public void addAt(T element, int index) throws MouseIndexOutOfBoudsException {
+	public void addAt(T element, int index)
+			throws MouseIndexOutOfBoudsException {
 		if (index < 0 || index > size) {
 			throw new MouseIndexOutOfBoudsException();
 		}
@@ -159,5 +162,23 @@ public class MouseLinkedList<T> implements IMouseList<T> {
 		head.setNext(null);
 		size = 0;
 
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			private Node node = head;
+
+			@Override
+			public boolean hasNext() {
+				return head.hasNext();
+			}
+
+			@Override
+			public T next() {
+				return null;
+			}
+
+		};
 	}
 }
